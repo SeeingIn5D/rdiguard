@@ -1,0 +1,23 @@
+# RDIGuard Configuration File
+
+thresholds:
+  critical: 0.75   # Highly automated pattern
+  high: 0.60       # Likely automated
+  medium: 0.45     # Suspicious
+  low: 0.30        # Slightly unusual
+
+monitoring:
+  interval: 60              # Check every N seconds
+  lookback_hours: 4         # How far back to look
+  min_events: 10           # Minimum events for analysis
+  max_interval_seconds: 86400  # Ignore gaps > 1 day
+
+output:
+  log_file: rdiguard.json
+  enable_syslog: false
+  verbose: false
+
+sources:
+  use_last: true           # Parse 'last' command
+  use_system_log: false    # Parse system logs
+  use_auth_log: false      # Parse /var/log/auth.log (requires permissions)
